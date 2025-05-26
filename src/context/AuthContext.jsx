@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   // Register user
   const register = async (userData) => {
     try {
-      const { data } = await axios.post('http://localhost:5002/api/auth/register', userData);
+      const { data } = await axios.post('https://hospitalmanagement-ocj3.onrender.com/api/auth/register', userData);
       
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify({
@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }) => {
   // Login user
   const login = async (credentials) => {
     try {
-      const { data } = await axios.post('http://localhost:5002/api/auth/login', credentials);
+      const { data } = await axios.post('https://hospitalmanagement-ocj3.onrender.com/api/auth/login', credentials);
       
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify({

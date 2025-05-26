@@ -13,7 +13,7 @@ export const AppointmentProvider = ({ children }) => {
   const getAppointments = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get('http://localhost:5002/api/appointments');
+      const { data } = await axios.get('https://hospitalmanagement-ocj3.onrender.com/api/appointments');
       setAppointments(data);
       setLoading(false);
     } catch (error) {
@@ -27,7 +27,7 @@ export const AppointmentProvider = ({ children }) => {
   const createAppointment = async (appointmentData) => {
     try {
       setLoading(true);
-      const { data } = await axios.post('http://localhost:5002/api/appointments', appointmentData);
+      const { data } = await axios.post('https://hospitalmanagement-ocj3.onrender.com/api/appointments', appointmentData);
       setAppointments(prev => [...prev, data]);
       setLoading(false);
       toast.success('Appointment created successfully');
@@ -44,7 +44,7 @@ export const AppointmentProvider = ({ children }) => {
   const updateAppointmentStatus = async (id, status) => {
     try {
       setLoading(true);
-      const { data } = await axios.put(`http://localhost:5002/api/appointments/${id}/status`, { status });
+      const { data } = await axios.put(`https://hospitalmanagement-ocj3.onrender.com/api/appointments/${id}/status`, { status });
       setAppointments(prev => prev.map(appt => appt._id === id ? data : appt));
       setLoading(false);
       toast.success('Appointment status updated');
@@ -61,7 +61,7 @@ export const AppointmentProvider = ({ children }) => {
   const deleteAppointment = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`http://localhost:5002/api/appointments/${id}`);
+      await axios.delete(`https://hospitalmanagement-ocj3.onrender.com/api/appointments/${id}`);
       setAppointments(prev => prev.filter(appt => appt._id !== id));
       setLoading(false);
       toast.success('Appointment deleted successfully');
